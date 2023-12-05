@@ -69,5 +69,6 @@
 		<module>nitrogenSensor</module>
 		<module>sensorsDataDBWriter</module>
 		<module>cryobankDto</module>
+		<module>sensorsDataAdvRedisReducer</module>
 	</modules>
 </project>
