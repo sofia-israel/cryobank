@@ -32,8 +32,8 @@ class NitrogenSensorApplicationTests {
 	@Value("${max_value}")
 	private int maxValue;
 
-	private String producerBindingName = "sendSensorData-out-0";
-	private String consumerBindingName = "sendSensorData-out-0";
+	private String producerBindingName = "sensor_nitrogen-data";
+	private String consumerBindingName = "sensor_nitrogen-data";
 	
 	@Test
 	void contextLoads()

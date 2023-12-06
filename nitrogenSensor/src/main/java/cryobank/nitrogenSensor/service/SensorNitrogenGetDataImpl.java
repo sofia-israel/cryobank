@@ -34,9 +34,7 @@ public class SensorNitrogenGetDataImpl implements ISensorNitrogenGetData {
 	private SensorNitrogenDto getRandomSensorData(int sensorID) {
 		long timestamp = System.currentTimeMillis();
 		int value = getRandomNumber(minValue, maxValue);
-		SensorNitrogenDto data = new SensorNitrogenDto(timestamp, value);
-		data.sensorID = sensorID;
-		return data;
+		return new SensorNitrogenDto(sensorID, timestamp, value);
 	}
 
 	private int getRandomNumber(int min, int max) {
