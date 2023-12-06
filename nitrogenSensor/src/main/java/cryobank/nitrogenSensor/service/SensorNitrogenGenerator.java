@@ -32,16 +32,15 @@ public class SensorNitrogenGenerator {
 	@Value("${max_value:250}")
 	private int maxValue;
 	
-	@Value("${app.sensor.alarmproducer.binding.name:alarm_producer-out-0}")
+	@Value("${app.sensor.alarmproducer.binding.name}")
 	String bindingName;
 	
 	//for test
 	boolean b = true;
 	
 	@Bean
-	// типизируем Supplier-а тем что он будет отправлять в Кафку - String-ом, потому что JSON
+	// String - JSON
 	public Supplier<String> sendSensorData() {
-		//здесь мы должны вернуть функцию, которая ничего не принимает, но что-то делает
 		return () ->
 		{
 			SensorNitrogenDto data;
