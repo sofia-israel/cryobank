@@ -70,5 +70,6 @@
 		<module>sensorsDataDBWriter</module>
 		<module>cryobankDto</module>
 		<module>sensorsDataAdvRedisReducer</module>
+		<module>loggerMongo</module>
 	</modules>
 </project>
