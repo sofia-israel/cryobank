@@ -24,7 +24,7 @@ public class DBWriter {
     SensorsRepository repository;
 
      @Bean
-     public Consumer<String> receiveSensorData() {
+     public Consumer<String> sqlWriterConsumerSensorData() {
     	 return data -> {
     		 SensorNitrogenDto sensorNitrogenDto = null;
     		 try {

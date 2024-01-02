@@ -52,6 +52,7 @@ public class AdvReducerService {
 		};
 	}
 	
+/*	
 	@Bean
 	public Consumer<String> receiveSensorData2() {
 		return data -> {
@@ -74,4 +75,5 @@ public class AdvReducerService {
 			}
 		};
 	}
+*/	
 }
