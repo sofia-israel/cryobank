@@ -34,6 +34,7 @@ public class CryobankController {
 		return service.getAvgValue(sensorID, from, to);
 	}
 
+	@GetMapping("max/{id}")
 	public int getMaxValue(@PathVariable("id") int sensorID,
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 
@@ -43,6 +44,7 @@ public class CryobankController {
 		return service.getMaxValue(sensorID, from, to);
 	}
 
+	@GetMapping("min/{id}")
 	public int getMinValue(@PathVariable("id") int sensorID,
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 
@@ -52,6 +54,7 @@ public class CryobankController {
 		return service.getMinValue(sensorID, from, to);
 	}
 
+	@GetMapping("maxdata")
 	public SensorNitrogenDto getMaxValue(
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 
@@ -61,6 +64,7 @@ public class CryobankController {
 		return service.getMaxValue(from, to);
 	}
 
+	@GetMapping("mindata")
 	public SensorNitrogenDto getMinValue(
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 
@@ -70,6 +74,7 @@ public class CryobankController {
 		return service.getMinValue(from, to);
 	}
 
+	@GetMapping("all/{id}")
 	public List<Integer> getAllValues(@PathVariable("id") int sensorID,
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 
@@ -79,6 +84,7 @@ public class CryobankController {
 		return service.getAllValues(sensorID, from, to);
 	}
 
+	@GetMapping("all")
 	public List<SensorNitrogenDto> getAllValues(
 			@RequestParam(name = "from", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'from'") String fromDateTime,
 			@RequestParam(name = "to", required = false) @Pattern(regexp = ISO_DATE_TIME, message = "wrong date/time format 'to'") String toDateTime) 

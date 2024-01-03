@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import cryobank.nitrogenSensor.dto.SensorNitrogenDto;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+//@Service
 @Slf4j
-public class CryobankServiceImpl implements CryobankService{
+public class CryobankServiceSqlImpl implements CryobankService{
 
 	@Override
 	public int getAvgValue(int sensorID, LocalDateTime from, LocalDateTime to) {
