@@ -23,56 +23,57 @@ public class SensorNitrogenGenerator {
 
 	@Autowired
 	ISensorNitrogenGetData gen;// = new SensorNitrogenGetDataImpl();
-	
-    @Autowired
-    StreamBridge streamBridge;
-    
+
+	@Autowired
+	StreamBridge streamBridge;
+
 	@Value("${app.min_value:30}")
 	private int minValue;
 	@Value("${app.max_value:250}")
 	private int maxValue;
-	
+
 	@Value("${app.sensor.alarmproducer.binding.name}")
 	String bindingName;
-	
-	//for test
+
+	// for test
 	boolean b = true;
-	
+
 	@Bean
 	// String - JSON
 	public Supplier<String> sendSensorData() {
-		return () ->
-		{
+		return () -> {
 			SensorNitrogenDto data;
-			if (b == true)
-			{
-				data = gen.getSensorNitrogenData(sNumber);//++); // only one sensor
+			if (b == true) {
+				data = gen.getSensorNitrogenData(sNumber);// ++); // only one sensor
 				b = false;
-			}
-			else
-			{
-				data = gen.getSensorAlarmNitrogenData(sNumber);//++);
+			} else {
+				data = gen.getSensorAlarmNitrogenData(sNumber);// ++);
 				b = true;
 			}
-			
-			// perhaps alarm output
-			if (data.nitrogen_level_value > maxValue || data.nitrogen_level_value < minValue)
-			{
-				log.trace("SensorNitrogen ALARM really sent data for sensorId {}", data.sensorID);
-			   streamBridge.send(bindingName, data);
-			}
+
+//			// perhaps alarm output
+//			if (data.nitrogen_level_value > maxValue || data.nitrogen_level_value < minValue)
+//			{
+//				log.trace("SensorNitrogen ALARM really sent data for sensorId {}", data.sensorID);
+//			   streamBridge.send(bindingName, data);
+//			}
 
 			// our standard output
 			try {
-				log.trace("SensorNitrogen really sent data for sensorId {}", data.sensorID);
-				return mapper.writeValueAsString(data);
-			} catch (Exception e)
-			{
+				// perhaps alarm output
+				if (data.nitrogen_level_value > maxValue || data.nitrogen_level_value < minValue) {
+					log.trace("SensorNitrogen ALARM really sent data for sensorId {}", data.sensorID);
+					streamBridge.send(bindingName, data);
+				} else {
+
+					log.trace("SensorNitrogen really sent data for sensorId {}", data.sensorID);
+					return mapper.writeValueAsString(data);
+				}
+			} catch (Exception e) {
 				return null;
 			}
+			return null;
 		};
 	}
 
-	
-	
 }

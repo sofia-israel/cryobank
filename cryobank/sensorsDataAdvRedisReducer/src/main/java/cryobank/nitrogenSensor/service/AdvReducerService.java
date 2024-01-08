@@ -52,7 +52,10 @@ public class AdvReducerService {
 		};
 	}
 	
-/*	
+//	Multiple functional beans were found [receiveSensorData, receiveSensorData2], 
+//	thus can't determine default function definition. 
+//	Please use 'spring.cloud.function.definition' property to explicitly define it. 
+	
 	@Bean
 	public Consumer<String> receiveSensorData2() {
 		return data -> {
@@ -74,6 +77,5 @@ public class AdvReducerService {
 				log.debug("AdvReducerService: receiveSensorData - wrong Data!");
 			}
 		};
-	}
-*/	
+	}	
 }
